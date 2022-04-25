@@ -21,7 +21,7 @@ maintainers:
     email: miroslav.hadzhiev@gmail.com
 name: kube-prometheus-stack
 sources:
-  - https://github.com/prometheus-community/helm-charts
+  - https://github.com/lostar01/helm-charts
   - https://github.com/prometheus-operator/kube-prometheus
 version: 34.10.0
 appVersion: 0.55.0
@@ -42,13 +42,13 @@ annotations:
 dependencies:
 - name: kube-state-metrics
   version: "4.7.*"
-  url: https://github.com/lostar01/helm-charts/tree/main/charts/kube-state-metrics
+  repository: file://subcharts/kube-state-metrics
   condition: kubeStateMetrics.enabled
 - name: prometheus-node-exporter
   version: "3.1.*"
-  repository: https://prometheus-community.github.io/helm-charts
+  repository: file://subcharts/prometheus-node-exporter
   condition: nodeExporter.enabled
 - name: grafana
   version: "6.26.*"
-  repository: https://grafana.github.io/helm-charts
+  repository: file://subcharts/grafana
   condition: grafana.enabled
