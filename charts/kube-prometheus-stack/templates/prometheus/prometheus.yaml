@@ -12,6 +12,9 @@ metadata:
 {{ toYaml .Values.prometheus.annotations | indent 4 }}
 {{- end }}
 spec:
+  additionalScrapeConfigs:
+    key: prometheus-additional.yaml
+    name: additional-configs
   alerting:
     alertmanagers:
 {{- if .Values.prometheus.prometheusSpec.alertingEndpoints }}
